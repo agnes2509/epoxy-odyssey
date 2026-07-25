@@ -103,18 +103,16 @@
   .hero-visual{position:relative; aspect-ratio:4/5; border-radius:4px; overflow:hidden;}
   .resin-slab{
     width:100%; height:100%;
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(31,168,255,.35), transparent 55%),
-      linear-gradient(135deg, #2b1c10 0%, #4a2f18 30%, #1a2530 55%, #0d1520 100%);
+    background-size:cover; background-position:center;
+    background-color:#1a2530;
     position:relative;
     animation: slowfloat 9s ease-in-out infinite;
   }
   .resin-slab::before{
     content:''; position:absolute; inset:0;
     background:
-      repeating-linear-gradient(100deg, rgba(255,255,255,0.03) 0px, transparent 2px, transparent 14px),
-      radial-gradient(ellipse at 70% 75%, rgba(160,106,59,.4), transparent 60%);
-    mix-blend-mode:overlay;
+      linear-gradient(180deg, rgba(14,17,22,0) 55%, rgba(14,17,22,.55) 100%),
+      radial-gradient(ellipse at 70% 10%, rgba(31,168,255,.18), transparent 55%);
   }
   .hero-visual .cap{
     position:absolute; bottom:18px; left:18px; font-size:.7rem; letter-spacing:1px;
@@ -167,15 +165,20 @@
   }
   .g-item .ph{
     width:100%; display:flex; align-items:flex-end; padding:16px; font-size:.72rem;
-    letter-spacing:1px; text-transform:uppercase; color:rgba(245,245,245,.55);
+    letter-spacing:1px; text-transform:uppercase; color:#fff;
     transition:transform .5s ease;
+    background-size:cover; background-position:center;
+    text-shadow:0 1px 6px rgba(0,0,0,.6);
   }
+  .g-item .ph::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%);}
   .g-item:hover .ph{transform:scale(1.06);}
-  .g-item[data-cat="stoliki"] .ph{height:320px; background:linear-gradient(160deg,#20140a,#3a2414 40%,#12202c);}
-  .g-item[data-cat="zegary"] .ph{height:230px; background:linear-gradient(160deg,#151b24,#1c2a38 50%,#2e1c10);}
-  .g-item[data-cat="dekoracje"] .ph{height:270px; background:linear-gradient(160deg,#1a2530,#0e1116 60%,#3a2414);}
-  .g-item[data-cat="bizuteria"] .ph{height:190px; background:linear-gradient(160deg,#241608,#1a2530 60%);}
-  .g-item .ph::before{content:'';}
+  .g-item[data-cat="stoliki"] .ph{height:320px; background-color:#20140a; background-image:linear-gradient(160deg,#20140a,#3a2414 40%,#12202c);}
+  .g-item[data-cat="zegary"] .ph{height:280px; background-color:#151b24; background-image:linear-gradient(160deg,#151b24,#1c2a38 50%,#2e1c10);}
+  .g-item[data-cat="dekoracje"] .ph{height:270px; background-color:#1a2530; background-image:linear-gradient(160deg,#1a2530,#0e1116 60%,#3a2414);}
+  .g-item[data-cat="bizuteria"] .ph{height:190px; background-color:#241608; background-image:linear-gradient(160deg,#241608,#1a2530 60%);}
+  .g-item.soon{cursor:default;}
+  .g-item.soon .ph{opacity:.55; font-style:italic;}
+  .g-item.soon:hover .ph{transform:none;}
   .g-item .tag{position:relative; z-index:2;}
   .g-item::after{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 20%, rgba(31,168,255,.18), transparent 60%);}
 
@@ -186,7 +189,7 @@
   }
   .lightbox.open{display:flex;}
   .lightbox-inner{max-width:640px; width:100%; text-align:center;}
-  .lightbox-img{height:340px; border-radius:4px; background:linear-gradient(160deg,#20140a,#1c2a38 60%,#0e1116);}
+  .lightbox-img{height:min(70vh,600px); border-radius:4px; background:linear-gradient(160deg,#20140a,#1c2a38 60%,#0e1116); background-size:cover; background-position:center;}
   .lightbox p{margin-top:18px; color:var(--text-muted); font-size:.85rem; letter-spacing:1px; text-transform:uppercase;}
   .lightbox-close{
     position:absolute; top:30px; right:40px; font-size:1.6rem; color:var(--text); cursor:pointer; background:none; border:none;
@@ -322,8 +325,8 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="resin-slab"></div>
-      <span class="cap">River table — dąb i żywica</span>
+      <div class="resin-slab" style="background-image:url('images/table-round-top.jpg');"></div>
+      <span class="cap">Stolik — dąb i żywica epoksydowa</span>
     </div>
   </div>
   <div class="scroll-cue"><span>Przewiń</span><span class="line"></span></div>
@@ -371,14 +374,20 @@
       <button class="filter-btn" data-filter="bizuteria">Biżuteria</button>
     </div>
     <div class="masonry reveal" id="masonry">
-      <div class="g-item" data-cat="stoliki"><div class="ph"><span class="tag">River table, dąb</span></div></div>
-      <div class="g-item" data-cat="zegary"><div class="ph"><span class="tag">Zegar, orzech</span></div></div>
-      <div class="g-item" data-cat="dekoracje"><div class="ph"><span class="tag">Podstawka dekoracyjna</span></div></div>
-      <div class="g-item" data-cat="stoliki"><div class="ph"><span class="tag">Stolik kawowy</span></div></div>
-      <div class="g-item" data-cat="bizuteria"><div class="ph"><span class="tag">Wisiorek żywiczny</span></div></div>
-      <div class="g-item" data-cat="zegary"><div class="ph"><span class="tag">Zegar ścienny XL</span></div></div>
-      <div class="g-item" data-cat="stoliki"><div class="ph"><span class="tag">Stolik boczny</span></div></div>
-      <div class="g-item" data-cat="dekoracje"><div class="ph"><span class="tag">Taca dekoracyjna</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-round-top.jpg"><div class="ph" style="background-image:url('images/table-round-top.jpg');"><span class="tag">Stolik, dąb i żywica</span></div></div>
+      <div class="g-item" data-cat="zegary" data-img="images/clock-full.jpg"><div class="ph" style="background-image:url('images/clock-full.jpg');"><span class="tag">Zegar, ziarna kawy</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-ocean-full.jpg"><div class="ph" style="background-image:url('images/table-ocean-full.jpg');"><span class="tag">Stolik River, ocean</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/tray-leopard.jpg"><div class="ph" style="background-image:url('images/tray-leopard.jpg');"><span class="tag">Taca, wzór żółwia</span></div></div>
+      <div class="g-item" data-cat="zegary" data-img="images/clock-corner.jpg"><div class="ph" style="background-image:url('images/clock-corner.jpg');"><span class="tag">Zegar — detal</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-round-macro.jpg"><div class="ph" style="background-image:url('images/table-round-macro.jpg');"><span class="tag">Stolik — detal fali</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/tray-copper-stones.jpg"><div class="ph" style="background-image:url('images/tray-copper-stones.jpg');"><span class="tag">Podstawka, miedź i onyks</span></div></div>
+      <div class="g-item" data-cat="zegary" data-img="images/clock-macro.jpg"><div class="ph" style="background-image:url('images/clock-macro.jpg');"><span class="tag">Zegar — wskazówki</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/coaster-dark-stone.jpg"><div class="ph" style="background-image:url('images/coaster-dark-stone.jpg');"><span class="tag">Podstawka, ciemny kamień</span></div></div>
+      <div class="g-item" data-cat="zegary" data-img="images/clock-full-2.jpg"><div class="ph" style="background-image:url('images/clock-full-2.jpg');"><span class="tag">Zegar, ziarna kawy II</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/tray-dark-soap.jpg"><div class="ph" style="background-image:url('images/tray-dark-soap.jpg');"><span class="tag">Podstawka pod dozownik</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/tray-leopard-soap.jpg"><div class="ph" style="background-image:url('images/tray-leopard-soap.jpg');"><span class="tag">Taca z dozownikiem</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-ocean-lifestyle.jpg"><div class="ph" style="background-image:url('images/table-ocean-lifestyle.jpg');"><span class="tag">Stolik Ocean, wnętrze</span></div></div>
+      <div class="g-item soon" data-cat="bizuteria"><div class="ph"><span class="tag">Biżuteria — wkrótce</span></div></div>
     </div>
   </div>
 </section>
@@ -386,7 +395,7 @@
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightbox-close">&times;</button>
   <div class="lightbox-inner">
-    <div class="lightbox-img"></div>
+    <div class="lightbox-img" id="lightbox-img"></div>
     <p id="lightbox-caption">Podpis zdjęcia</p>
   </div>
 </div>
@@ -423,26 +432,26 @@
     </div>
     <div class="cards">
       <div class="card reveal">
-        <div class="thumb"></div>
+        <div class="thumb" style="background-image:url('images/table-ocean-full.jpg'); background-size:cover; background-position:center;"></div>
         <div class="info">
-          <h3>River Oak</h3>
-          <p class="meta">120 × 60 cm · dąb · 2026</p>
+          <h3>Ocean Wave Table</h3>
+          <p class="meta">Stolik z organicznym brzegiem · żywica lana · 2026</p>
           <a href="#kontakt" class="link">Zapytaj o podobny</a>
         </div>
       </div>
       <div class="card reveal">
-        <div class="thumb"></div>
+        <div class="thumb" style="background-image:url('images/clock-full-2.jpg'); background-size:cover; background-position:center;"></div>
         <div class="info">
-          <h3>Midnight Clock</h3>
-          <p class="meta">Ø 40 cm · orzech · 2026</p>
+          <h3>Coffee Bean Clock</h3>
+          <p class="meta">Ø 30 cm · żywica i ziarna kawy · 2026</p>
           <a href="#kontakt" class="link">Zapytaj o podobny</a>
         </div>
       </div>
       <div class="card reveal">
-        <div class="thumb"></div>
+        <div class="thumb" style="background-image:url('images/table-round-top.jpg'); background-size:cover; background-position:center;"></div>
         <div class="info">
-          <h3>Coastal Slab</h3>
-          <p class="meta">90 × 45 cm · jesion · 2025</p>
+          <h3>Oak Ring Table</h3>
+          <p class="meta">Dąb, słoje naturalne · żywica turkusowa · 2026</p>
           <a href="#kontakt" class="link">Zapytaj o podobny</a>
         </div>
       </div>
@@ -486,27 +495,29 @@
     <div class="reveal">
       <span class="section-label">Kontakt</span>
       <h2 style="font-size:2.4rem; margin-bottom:24px;">Porozmawiajmy o Twoim projekcie</h2>
-      <form onsubmit="event.preventDefault(); alert('Dziękuję za wiadomość! (formularz demonstracyjny — podłącz np. Formspree lub mailto, żeby zacząć odbierać wiadomości)');">
+      <form id="contact-form" action="https://formspree.io/f/TWOJ_FORM_ID" method="POST">
         <div class="field">
           <label for="name">Imię</label>
-          <input id="name" type="text" required>
+          <input id="name" name="name" type="text" required>
         </div>
         <div class="field">
           <label for="email">E-mail</label>
-          <input id="email" type="email" required>
+          <input id="email" name="email" type="email" required>
         </div>
         <div class="field">
           <label for="msg">Wiadomość</label>
-          <textarea id="msg" rows="4" required></textarea>
+          <textarea id="msg" name="message" rows="4" required></textarea>
         </div>
+        <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Epoxy Odyssey">
         <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+        <p id="form-status" style="margin-top:14px; font-size:.85rem; color:var(--text-muted);"></p>
       </form>
       <div class="contact-alt">
         <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
         <a href="https://facebook.com" target="_blank" rel="noopener" class="btn btn-ghost">Facebook</a>
       </div>
     </div>
-    <div class="contact-visual reveal"></div>
+    <div class="contact-visual reveal" style="background-image:url('images/bathroom-scene.jpg'); background-size:cover; background-position:center;"></div>
   </div>
 </section>
 
@@ -575,14 +586,46 @@
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxImg = document.getElementById('lightbox-img');
   gItems.forEach(item=>{
+    if(item.classList.contains('soon')) return;
     item.addEventListener('click', ()=>{
       lightboxCaption.textContent = item.querySelector('.tag').textContent;
+      const src = item.dataset.img || '';
+      lightboxImg.style.backgroundImage = src ? `url('${src}')` : 'none';
       lightbox.classList.add('open');
     });
   });
   document.getElementById('lightbox-close').addEventListener('click', ()=> lightbox.classList.remove('open'));
   lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
+
+  // Contact form -> Formspree (AJAX, bez przeładowania strony)
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  if(contactForm){
+    contactForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      formStatus.textContent = 'Wysyłanie...';
+      try{
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if(res.ok){
+          formStatus.textContent = 'Dziękuję! Wiadomość została wysłana.';
+          contactForm.reset();
+        } else {
+          formStatus.textContent = 'Coś poszło nie tak. Spróbuj ponownie lub napisz bezpośrednio na Instagramie.';
+        }
+      } catch(err){
+        formStatus.textContent = 'Brak połączenia. Spróbuj ponownie później.';
+      }
+      submitBtn.disabled = false;
+    });
+  }
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item=>{
