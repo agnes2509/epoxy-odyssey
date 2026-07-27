@@ -10,13 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0E1116;
-    --section:#161B22;
-    --section-2:#12161d;
+    --bg:#0A0F1E;
+    --section:#111A30;
+    --section-2:#0C1224;
     --text:#F5F5F5;
-    --text-muted:#B9C0C9;
-    --resin:#1FA8FF;
-    --wood:#A06A3B;
+    --text-muted:#AEB8CC;
+    --resin:#2EB6FF;
+    --wood:#D0975A;
     --border: rgba(245,245,245,0.08);
     --max: 1180px;
   }
@@ -34,7 +34,7 @@
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
-  ::selection{background:var(--resin); color:#0E1116;}
+  ::selection{background:var(--resin); color:#0A0F1E;}
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
@@ -49,7 +49,7 @@
   }
   header.scrolled{
     padding:14px 0;
-    background:rgba(14,17,22,0.72);
+    background:rgba(10,15,30,0.72);
     backdrop-filter:blur(14px) saturate(140%);
     -webkit-backdrop-filter:blur(14px) saturate(140%);
     border-bottom:1px solid var(--border);
@@ -75,7 +75,6 @@
   .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; z-index:200;}
   .burger span{width:26px; height:1px; background:var(--text); transition:.3s;}
 
-  /* ---------- HERO ---------- */
   .hero{
     min-height:100vh; display:flex; align-items:center; position:relative;
     padding-top:100px;
@@ -95,7 +94,7 @@
     padding:15px 30px; font-size:.82rem; letter-spacing:1px; text-transform:uppercase;
     border-radius:2px; cursor:pointer; transition:.3s ease; display:inline-block; border:1px solid transparent;
   }
-  .btn-primary{background:#fff; color:#0E1116;}
+  .btn-primary{background:#fff; color:#0A0F1E;}
   .btn-primary:hover{background:var(--resin); color:#fff; transform:translateY(-2px);}
   .btn-ghost{border-color:var(--border); color:var(--text);}
   .btn-ghost:hover{border-color:var(--resin); color:var(--resin);}
@@ -111,12 +110,12 @@
   .resin-slab::before{
     content:''; position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(14,17,22,0) 55%, rgba(14,17,22,.55) 100%),
+      linear-gradient(180deg, rgba(10,15,30,0) 55%, rgba(10,15,30,.55) 100%),
       radial-gradient(ellipse at 70% 10%, rgba(31,168,255,.18), transparent 55%);
   }
   .hero-visual .cap{
     position:absolute; bottom:18px; left:18px; font-size:.7rem; letter-spacing:1px;
-    color:var(--text-muted); text-transform:uppercase; background:rgba(14,17,22,.55);
+    color:var(--text-muted); text-transform:uppercase; background:rgba(10,15,30,.55);
     padding:6px 12px; border-radius:2px; backdrop-filter:blur(6px);
   }
   @keyframes slowfloat{0%,100%{transform:scale(1);} 50%{transform:scale(1.03);}}
@@ -206,6 +205,59 @@
   .step h3{font-size:1.5rem; margin-bottom:6px;}
   .step p{color:var(--text-muted); font-size:.92rem; max-width:520px;}
 
+  .process-visual{
+    position:relative; height:420px; border-radius:4px; overflow:hidden; margin-bottom:56px;
+    background-size:cover; background-position:center; background-color:#111;
+  }
+  .process-visual::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(10,15,30,.85) 0%, rgba(10,15,30,0) 45%);
+  }
+  .process-visual .cap{
+    position:absolute; bottom:22px; left:28px; z-index:2; font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:1.3rem; color:var(--text); max-width:520px;
+  }
+  @media (max-width:720px){ .process-visual{height:280px;} }
+
+  /* ---------- MARQUEE (przewijający się pasek zdjęć) ---------- */
+  .marquee-wrap{
+    position:relative; overflow:hidden;
+    height:64vh; min-height:400px; max-height:660px;
+  }
+  .marquee-track{
+    display:flex; gap:6px; height:100%; width:max-content;
+    animation: marquee-scroll 46s linear infinite;
+  }
+  .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
+  .mq-item{ height:100%; width:360px; flex-shrink:0; overflow:hidden; position:relative; }
+  .mq-item img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    animation: subtle-zoom 11s ease-in-out infinite alternate;
+    transform-origin:center;
+  }
+  @keyframes subtle-zoom{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.14);}
+  }
+  @keyframes marquee-scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .marquee-title{
+    position:absolute; inset:0; z-index:5; pointer-events:none;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    background:radial-gradient(ellipse at center, rgba(9,11,14,.6) 0%, rgba(9,11,14,.25) 55%, rgba(9,11,14,.05) 100%);
+  }
+  .marquee-title .eyebrow{justify-content:center; color:var(--wood);}
+  .marquee-title h2{
+    font-size:clamp(2.6rem,7vw,4.6rem); color:#fff; margin-top:14px;
+    text-shadow:0 6px 30px rgba(0,0,0,.55);
+  }
+  @media (max-width:720px){
+    .marquee-wrap{height:46vh; min-height:280px;}
+    .mq-item{width:220px;}
+  }
+
   /* ---------- QUOTE ---------- */
   .quote{
     padding:150px 0; text-align:center; position:relative;
@@ -292,9 +344,9 @@
   <nav class="wrap">
     <a href="#" class="logo">Epoxy <em>Odyssey</em></a>
     <ul class="nav-links">
-      <li><a href="#stoliki">Stoliki</a></li>
-      <li><a href="#zegary">Zegary</a></li>
-      <li><a href="#dekoracje">Dekoracje</a></li>
+      <li><a href="#galeria" data-goto-filter="stoliki">Stoliki</a></li>
+      <li><a href="#galeria" data-goto-filter="zegary">Zegary</a></li>
+      <li><a href="#galeria" data-goto-filter="dekoracje">Dekoracje</a></li>
       <li><a href="#proces">Proces</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -311,6 +363,40 @@
     </button>
   </nav>
 </header>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="mq-item"><img src="images/clock-full.jpg" alt="Zegar z ziaren kawy" style="animation-delay:0s;"></div>
+    <div class="mq-item"><img src="images/table-round-top.jpg" alt="Stolik dąb i żywica" style="animation-delay:1.2s;"></div>
+    <div class="mq-item"><img src="images/tray-leopard.jpg" alt="Taca wzór żółwia" style="animation-delay:2.4s;"></div>
+    <div class="mq-item"><img src="images/table-ocean-full.jpg" alt="Stolik River ocean" style="animation-delay:.6s;"></div>
+    <div class="mq-item"><img src="images/abstract-ocean-panel.jpg" alt="Panel dekoracyjny ocean" style="animation-delay:1.8s;"></div>
+    <div class="mq-item"><img src="images/clock-corner.jpg" alt="Zegar detal" style="animation-delay:3s;"></div>
+    <div class="mq-item"><img src="images/tray-copper-stones.jpg" alt="Podstawka miedź i onyks" style="animation-delay:.9s;"></div>
+    <div class="mq-item"><img src="images/table-round-leaf.jpg" alt="Stolik dąb, wnętrze" style="animation-delay:2.1s;"></div>
+    <div class="mq-item"><img src="images/table-round-macro.jpg" alt="Stolik detal fali" style="animation-delay:.3s;"></div>
+    <div class="mq-item"><img src="images/clock-corner-2.jpg" alt="Zegar detal II" style="animation-delay:2.7s;"></div>
+    <div class="mq-item"><img src="images/coaster-dark-stone.jpg" alt="Podstawka ciemny kamień" style="animation-delay:1.5s;"></div>
+    <div class="mq-item"><img src="images/table-round-moody.jpg" alt="Stolik, nastrojowe ujęcie" style="animation-delay:2.9s;"></div>
+    <!-- powtórzone dla płynnej pętli -->
+    <div class="mq-item"><img src="images/clock-full.jpg" alt="Zegar z ziaren kawy" style="animation-delay:0s;"></div>
+    <div class="mq-item"><img src="images/table-round-top.jpg" alt="Stolik dąb i żywica" style="animation-delay:1.2s;"></div>
+    <div class="mq-item"><img src="images/tray-leopard.jpg" alt="Taca wzór żółwia" style="animation-delay:2.4s;"></div>
+    <div class="mq-item"><img src="images/table-ocean-full.jpg" alt="Stolik River ocean" style="animation-delay:.6s;"></div>
+    <div class="mq-item"><img src="images/abstract-ocean-panel.jpg" alt="Panel dekoracyjny ocean" style="animation-delay:1.8s;"></div>
+    <div class="mq-item"><img src="images/clock-corner.jpg" alt="Zegar detal" style="animation-delay:3s;"></div>
+    <div class="mq-item"><img src="images/tray-copper-stones.jpg" alt="Podstawka miedź i onyks" style="animation-delay:.9s;"></div>
+    <div class="mq-item"><img src="images/table-round-leaf.jpg" alt="Stolik dąb, wnętrze" style="animation-delay:2.1s;"></div>
+    <div class="mq-item"><img src="images/table-round-macro.jpg" alt="Stolik detal fali" style="animation-delay:.3s;"></div>
+    <div class="mq-item"><img src="images/clock-corner-2.jpg" alt="Zegar detal II" style="animation-delay:2.7s;"></div>
+    <div class="mq-item"><img src="images/coaster-dark-stone.jpg" alt="Podstawka ciemny kamień" style="animation-delay:1.5s;"></div>
+    <div class="mq-item"><img src="images/table-round-moody.jpg" alt="Stolik, nastrojowe ujęcie" style="animation-delay:2.9s;"></div>
+  </div>
+  <div class="marquee-title">
+    <span class="eyebrow">Ręcznie robione • drewno i żywica</span>
+    <h2>Epoxy Odyssey</h2>
+  </div>
+</div>
 
 <section class="hero">
   <div class="wrap hero-grid">
@@ -387,6 +473,11 @@
       <div class="g-item" data-cat="dekoracje" data-img="images/tray-dark-soap.jpg"><div class="ph" style="background-image:url('images/tray-dark-soap.jpg');"><span class="tag">Podstawka pod dozownik</span></div></div>
       <div class="g-item" data-cat="dekoracje" data-img="images/tray-leopard-soap.jpg"><div class="ph" style="background-image:url('images/tray-leopard-soap.jpg');"><span class="tag">Taca z dozownikiem</span></div></div>
       <div class="g-item" data-cat="stoliki" data-img="images/table-ocean-lifestyle.jpg"><div class="ph" style="background-image:url('images/table-ocean-lifestyle.jpg');"><span class="tag">Stolik Ocean, wnętrze</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-round-full.jpg"><div class="ph" style="background-image:url('images/table-round-full.jpg');"><span class="tag">Stolik dąb, pełny widok</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-round-leaf.jpg"><div class="ph" style="background-image:url('images/table-round-leaf.jpg');"><span class="tag">Stolik dąb, wnętrze II</span></div></div>
+      <div class="g-item" data-cat="stoliki" data-img="images/table-round-moody.jpg"><div class="ph" style="background-image:url('images/table-round-moody.jpg');"><span class="tag">Stolik — nastrojowe ujęcie</span></div></div>
+      <div class="g-item" data-cat="zegary" data-img="images/clock-corner-2.jpg"><div class="ph" style="background-image:url('images/clock-corner-2.jpg');"><span class="tag">Zegar — detal II</span></div></div>
+      <div class="g-item" data-cat="dekoracje" data-img="images/abstract-ocean-panel.jpg"><div class="ph" style="background-image:url('images/abstract-ocean-panel.jpg');"><span class="tag">Panel dekoracyjny, ocean</span></div></div>
       <div class="g-item soon" data-cat="bizuteria"><div class="ph"><span class="tag">Biżuteria — wkrótce</span></div></div>
     </div>
   </div>
@@ -557,7 +648,20 @@
     header.classList.toggle('mobile-open');
   });
   document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click', ()=> header.classList.remove('mobile-open'));
+    a.addEventListener('click', ()=>{
+      header.classList.remove('mobile-open');
+      const cat = a.dataset.gotoFilter;
+      if(cat){
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
+        if(targetBtn){
+          document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+          targetBtn.classList.add('active');
+          document.querySelectorAll('.g-item').forEach(item=>{
+            item.style.display = (item.dataset.cat===cat) ? '' : 'none';
+          });
+        }
+      }
+    });
   });
 
   // Scroll reveal
@@ -572,8 +676,11 @@
   // Gallery filter
   const filterBtns = document.querySelectorAll('.filter-btn');
   const gItems = document.querySelectorAll('.g-item');
-  filterBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
+  const filtersWrap = document.querySelector('.filters');
+  if(filtersWrap){
+    filtersWrap.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.filter-btn');
+      if(!btn) return;
       filterBtns.forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
@@ -581,21 +688,24 @@
         item.style.display = (f==='all' || item.dataset.cat===f) ? '' : 'none';
       });
     });
-  });
+  }
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxCaption = document.getElementById('lightbox-caption');
   const lightboxImg = document.getElementById('lightbox-img');
-  gItems.forEach(item=>{
-    if(item.classList.contains('soon')) return;
-    item.addEventListener('click', ()=>{
-      lightboxCaption.textContent = item.querySelector('.tag').textContent;
+  const masonry = document.getElementById('masonry');
+  if(masonry){
+    masonry.addEventListener('click', (e)=>{
+      const item = e.target.closest('.g-item');
+      if(!item || item.classList.contains('soon')) return;
+      const tagEl = item.querySelector('.tag');
+      lightboxCaption.textContent = tagEl ? tagEl.textContent : '';
       const src = item.dataset.img || '';
       lightboxImg.style.backgroundImage = src ? `url('${src}')` : 'none';
       lightbox.classList.add('open');
     });
-  });
+  }
   document.getElementById('lightbox-close').addEventListener('click', ()=> lightbox.classList.remove('open'));
   lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
 
